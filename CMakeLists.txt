@@ -8,10 +8,12 @@ set(LDFLAGS "${LDFLAGS}" systemd)
 
 option(WITH_GPIO "add gpio set with dbus" OFF)
 if(WITH_GPIO)
+add_definitions(-DWITH_GPIO)
 pkg_check_modules(PC_LIBGPIOD libgpiodcxx REQUIRED)
 set(LDFLAGS "${LDFLAGS}" gpiodcxx)
 endif(WITH_GPIO)
 
+option(USE_HOST "add gpio set with dbus" OFF)
 if(USE_HOST)
 add_definitions(-DUSE_HOST)
 endif(USE_HOST)
