@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
 			&reply,
 			"sx",
 			"Reboot",
-			45
+			46
 	);
 	/* input signature */
 	/* first argument */
