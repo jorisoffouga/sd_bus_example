@@ -1,7 +1,8 @@
-
 cmake_minimum_required(VERSION 3.10)
 
 include(FindPkgConfig)
+
+set (CMAKE_CXX_STANDARD 11)
 
 pkg_check_modules(SYSTEMD libsystemd>=211 REQUIRED)
 set(LDFLAGS "${LDFLAGS}" systemd)
@@ -18,7 +19,6 @@ if(USE_HOST)
 add_definitions(-DUSE_HOST)
 endif(USE_HOST)
 # cpp requirements
-set (CMAKE_CXX_STANDARD 11)
 
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/inc)
 
@@ -31,5 +31,5 @@ target_link_libraries(sd-client ${LDFLAGS})
 install (TARGETS sd-server DESTINATION sbin)
 install (TARGETS sd-client DESTINATION sbin)
 
-install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/com.linux.gateway.conf
+install (FILES ${CMAKE_CURRENT_SOURCE_DIR}/data/com.gateway.linux.conf
 	           DESTINATION /etc/dbus-1/system.d/)
